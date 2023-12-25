@@ -1,0 +1,100 @@
+=> Course outline
+1. Intro
+2. Variables
+3. Math functions
+4. Control flow (Branching)
+a. if stattement; b. while loops; c. for loops
+5. Exit codes
+6. Universal update script
+7. Filesystem locations for scripts
+8. Data streams (std. I/O/Err)
+9. Functions
+10. Case statements
+11. Arguments12. Creating backup script
+
+=> Introduction
+- Bash is a command interpreter or shell but also has alot of features that makes it a programming Language. 
+- A script file has the extension name of 'sh' and the execution permission for the file must be set. And to run a script, we use type "./myScript.sh". 
+
+NB: The extension name is just a practice and not necessary
+- The first line of any bash script must starts with the path to the interpreter (it is a practice); "#!/bin/bash".
+
+=> Variables
+- To create a variable, we have;
+* variableName=value e.g. username = "Adigun Alapomeji". Note that there must not be spaces)
+*To reference or print the value of the variable, we precede it with "$" sign e.g "$username"
+*NB: Double quotes should be use for string interpolation. For example: 
+username="Lanx"
+echo "Hello! This is $username."
+- Command output can also be parse to variable e.g.
+
+myOutput = $(ls) !where $(ls) is called subshell; subshell allows you to execute command in the background by running the command in the background and gives the output to the variable.  
+
+*Some built-in or environment variables: $PATH, $USER, etc.
+* "env" - To output all variables   
+
+=> Math functions
+- To evaluate any mathematical expression, we use evaluate expressions command using "expr" followed by the expression itself.
+e.g. expr 30 + 65
+
+-In the case of some characters that have special meaning in bash, we use escape character "\" before the character itself
+e.g $54 \* $4   (since * is one of the wildcards)  
+
+=> the Control Flow 
+
+1) IF statement
+Basically, the command used most frequently with the if statement is "test" command. The command checks the validity of expression, file types and permissions related to the file.  It has two equivalent forms: 
+
+- first, "test expression"
+- second,"[ expression ]"
+
+
+
+*- Logical operators: "-eq", "-ne", "-lt", "-gt"
+*_ echo $?: To view the exit status
+
+ai) Normal variable:
+
+if [ $num -eq 31 ]
+then
+	echo "The number is equal"
+else
+	echo "The number is not equal"
+fi
+
+NB: The "fi" is used to end the if statement
+
+aii) Checking the presence of file or directory on the filesystem, we use "-f" or "-d". Where -f rep file and -d rep direcoty.
+
+if [ -f directory ]
+then
+	echo "The file exist in the directory"
+else
+	echo "The file is missing in the directory"
+fi
+
+*- Newline methods in bash
+-single quote with $ e.g. 
+echo $'The math script is running...\n'
+- using option "-e" with echocommand e.g.
+echo -e "my name is lanx \n"
+
+*- The altenative use of "which" command in the bash
+The "which" command is used to check the existence and location of an app or command on the filesystem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

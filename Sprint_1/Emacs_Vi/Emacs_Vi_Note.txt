@@ -1,0 +1,101 @@
+==> A. Emacs Editor
+- Commands:
+
+NB: "c"  -> ctrl
+     "m" -> Meta or Alt
+
+emacs -> To open the emacs editor
+f10 and arrow keys -> To navigate through the toolbar
+c-x c-f  -> To create/open a new file
+c-x u -> To undo
+c-x c-s -> To save in a file
+c-x c-c -> To quit the file
+c-k -> To cut copy a line
+c-y -> To paste
+c-s -> To search
+M-w - To copy
+
+
+
+==>  Vi
+vim.rtorr.com -> for cheat sheet
+
+i -> Insert mode
+Esc  -> Command mode
+Ctrl+v -> Visual mode
+HJKL -> To move around; k(up key), j(down key), h(left key), l(right key)
+
+dd -> To cut copy
+:q<return> -> To quit
+:q!<return> -> quit vi even though latest changes have not been saved for this vi call
+p -> To paste
+u -> Undoing
+ctrl+r -> Redoing
+yy -> copy
+lineNum + shift + g -> To jump to a certain line in the code
+a -> To start typing after the semi-colon of a line from command mode to insert mode
+w -> To jump to the beginnig of the next word
+b -> To jump to the beginnig of the previous word
+shift + zz -> function as (:wq)
+d+$ -> To delete to the end of the line
+
+":syntax on" -> To enable linter or to highlight necessary thing in the code
+
+":set number" -> To display line number.
+
+NB: All these are ignored once the editor is closed. However, to enable those settings on by default, we need to add those commands to a configuration file. Follow this:
+
+-Go to home directory; create a file ".vimrc" and open with vim editor; Type all the setting inside the file and close.
+
+
+
+-commenting
+*Visual Mode method
+-You can also use Vim visual mode to comment out a block of code.
+
+-Navigate to the line you wish to start commenting out. Press the Ctrl + V keys to enable visual mode.
+-Select all the lines you wish to comment out using the up and down arrow keys or the letters k and j. Vim will insert a highlight at each line's beginning to indicate the selected line.
+Vim Comment Visual Mode
+-With the target lines selected, press Shift + I to enter insert mode.
+-Enter the comment symbol for the target file. In this case, must insert the pound (#) symbol to comment Python code.
+-Press the ESC key, and Vim will comment out all the selected lines.
+Vim Comment Visual Set
+
+
+How to Uncomment Multiple Lines
+You may also need to uncomment multiple lines. To do this, you can use the visual mode or a command.
+
+1. Visual Mode
+-Start by navigating to the line you wish to uncomment, then press Ctrl + V to activate the visual block mode.
+-Select all the lines you want to uncomment using the up and down arrow keys or the letters k and j.
+-Once your lines are selected, press the X key to remove the comments.
+
+
+-Opening multiple files
+
+vi -O file1 file2 - To open the files side by side, "-o" can also be used of stacked or horizontal view.
+
+:n - To view the next tab (file) opened
+:prev - To view the previous tab (file) opened
+ctrl+w - To navigate through the tabs opened
+:q - To close the current tab (NB: if all tabs are opened with option "-o" or "-O").
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

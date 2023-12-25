@@ -1,0 +1,212 @@
+##Setting up git as a first user
+Using git bash (Bornne-again shell)
+Install "posh-git" to beatify the git bash
+
+A. Configuration Settings
+There are different levels (or configuration file location) applied to the settings which include,
+i. System level - Applied to all users on the system
+ii. Global level - Applied to all repos of the current user
+iii. Local level - Applied only to the current repo 
+
+-> Command pattern
+- "git command --option arguments" (this can vary from one cmd to another)
+
+- "git config" - Used to configure settings such as Name, Email, Default Editor,Line Ending
+
+-git config --global user.name (for email, user.email)
+- git config --global core.editor "code --wait" - For vs code editor where "--wait" flag tells the terminal window to wait till we close the new vs code instance. 
+- "git config --global -e" - To view the configuration on the editor
+- End of lines handling - This is vary from one OS to another and it include "\r" for carriage return and "\n" for line feed.
+
+* Window -> "text\r\n" ("git config --global core.autocrlf true")
+* mac -> "teext\n" ("git config --global core.autocrlf input") 
+
+- "git config --global --unset-all" - to unset mistakenly typed configuration.
+
+B. Initializing a Repository
+- Create a project directory and navigate to the folder from the cmd.
+- git init - To athe poject to git repo
+
+C. Git workflow
+- Assume an empty project folder, then after adding files to it, the following is done:
+i. adding the files to the "staging area" or "index"- This is an intermediate phase. it's essentially used to propose for the next commit or snapshot by reviewing our modifitions or changes we made before taken a snapshot or commit. Therefore, we use the command,
+
+* git add fileName - To add the file into the stagging area
+* git add *.png - To add files with file ext of 'txt'
+* git add . - To add all changes in the directory
+
+ii. Commiting into the repo - To permanently store the changes into the repository. 
+* git commit -m "Commit Message" - To commit changes with short message
+* git commit - This is for the purpose of long description as it opens a new file through the editor to type the message.
+* git commit -am "Commit Message" - To add and commit at same time.
+
+
+D. Miscellaneous
+
+cd yourDirectory --- cd To Change directory to your directory
+
+git init -- To initialize or create new repository 
+
+git status -- To check the status of the repository (use oftens)
+* git status -s -- For short status
+
+git config user.name -- Shows name
+
+git config --list  --> listng all the configuration
+
+git config --list --show-origin  -> Shows all details for configuration 
+
+git add -- To add an untracked file to the git so any changes made can be tracked (any file added is considered the to be in stagging environment)
+
+git ls-files - To list files in the stagging area
+
+-> Removing Files
+git rm --cached filename -- To untrack recently commited file or empty directory from stagging.
+
+git rm filename -- To del file from both the stagging area and working folder completely (one can also delete the file manually from the folder)
+
+rm -rf .git -> To remove repo
+
+git restore --staged "index.html" -- To restore deleted file or non-commited file into repository only.
+
+git restore "index.html" -- to restore del file into the folder.
+
+-> Renaming files in git
+git mv oldName newName - To rename or move file both in the stagging area and working folder
+
+-> To ignore certain files or directory;
+-create a new txt file and name as ".gitignore"
+-open and enter the file or dir(/) name e.g "secret_dir/" (for directory), "salaries.txt" (for a file)
+-Pattern can also be used such as, "*.txt" (for all txt files)
+
+NB: it only works if the files or dir have not been added to git before they were included in the ignore file. If the file is commited already, just remove it from the staging area (refer to removing files at the top).
+
+-> Viewing staged and unstagged changes
+- git diff --staged  - To view changes between the last commit and the current stagging.
+- git diff - To view changes betweenn the stagging area and working directory that are not staged yet (Shows nothing if there aren't any).
+
+-> Viewing History
+git log -> To view all the commit logs from latest down to the oldest
+
+git log --oneline -> For summary of the commit
+
+git show commitIdentifierNum - To view the details of a particular commit.
+* "git show HEAD" or "git show HEAD~1" -> To view the details of the latest or the following (depending on the step downward) commit. 
+
+* "git show HEAD~2:relPathToTheFile" -> To view the current details of the third to the last commit.
+
+
+
+
+
+
+git add --all (or "-A" or ".")  -- To add the entire files in the directory
+
+git commit -m "Name given or attached to the commit" -- To take a snapshot of the files in the repository at a point in time (that is writing an entry in a history book such as hotel or in the case of call log).  In other word, it can be considered as writing the current state of those files in the history book before making any further changes. 
+
+NB: "Name given or attached to the commit" is a message that goes along with the commit. Something like a name or tag attached to the committed files at that point in time.  
+
+
+
+In essence, there are 3 diff environments in git
+i. working files or envr - This is where you can make edit to files
+
+ii. stagging - This is when you add the file after changes (something like holding a pen before writing to the history book which is "commit")
+
+NB: git restore --staged index.html -- can be used to return back into the working environment
+* "git restore --staged ."
+
+iii. commit - At this stage, the new state is now being recorded
+
+e.g. -edit index.html file
+     -type "git status" to see the status of diectory; if any            changes have been made
+     -type "git diff" to see difference in the file content
+     -then add it again into repo or stagging the file for              commit.
+     -you can also unstage the file if you are not ready, that is         reverse back to the working envr using "git reverse --staged        index.html"
+
+
+git commit -a -m "Name given or attached to the commit" - To add and commit files at the same time
+
+git mv "old name" 'new name' - renaming file  (mv stands for move)
+
+git log -- To review all the commits made. 
+-for abbr version, "git log --oneline"
+-for more detailed log, "git log -p"
+
+git commit -m "commited name or label to be corrected to" --amend -- To rename a recent commited name
+
+git help log -- To view log documentary
+
+git reset commit-id -- To jump back to previous commit
+
+git rebase -i --root -- To modify what appears in the history book and the order they appear. It shows an editor with some commands that can be used. To exit the editor, just close the editor from vs code
+
+git branch 'name' -- To create new branch for editing without affecting the main branch. In this case, the copy of the current existing branch is made into the new branch
+
+git switch branchNameSwitchingTo  -- To switch to a desired brach created
+
+git switch -c branchNameSwitchingTo  -- To create and switch to the new branch.
+
+git merge -m "merge renameContactButton to master branch" renameContactButton -- To merge the new branch with the main branch
+
+git branch -d renameContactButton -- To delete the new branch
+
+--> Having a conflicting branch. In this case, modification that is made in a branch is already reflecting in the main branching before merging even took place.
+
+git push --all - To push all the files to the github
+
+git fetch  -- To view all the changes made on github from git bash 
+
+git merge  -- To merge changes in remote repository with the local machine's
+
+git pull --all - Combo of fetch and merge
+
+
+--> To push new branch
+
+git push --set-upstream origin new_branch_name  - To push new branch
+
+===> Shell navigation
+
+mkdir -- to make a new dir
+
+echo 'My first readme' > README.md -- To create a read me file with a content of "My first readme"
+
+The touch command is a standard command used in UNIX/Linux operating system which is used to create, change and modify timestamps of a file. Basically, there are two different commands to create a file in the Linux system which is as follows:
+
+cat my_file: It is used to create a file with content or get contents of a file.
+
+touch my_file: It is used to create a file without any content. The file created using touch command is empty. This command can be used when the user doesn’t have data to store at the time of file creation.
+
+"more READMEmd"-- To output the content of README.md file
+
+git push origin branchName -- To push branch
+
+pwd -> To print working directory  (linux)
+less -> To print the contents of the file 
+
+ls -> To list files
+
+ls -a -> To list hidden files
+
+ls -l -> Listing files in long format
+
+ls -al -> Listing all hidden files in long format
+
+
+
+---------------------------CHATGPT SOLUTION ------------------
+https://chat.openai.com/share/0f9dfabc-8a71-475e-91ef-cbf8dfc9ed77
+
+
+
+
+
+
+
+
+
+
+
+
+

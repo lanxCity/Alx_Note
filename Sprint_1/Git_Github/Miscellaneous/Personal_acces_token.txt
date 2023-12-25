@@ -1,0 +1,14 @@
+Personal Access Token - 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
+
+-For local existing project
+git remote add origin https://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@github.com/lanxCity/your-repo-name.git
+
+After that, then "git push --set-upstream origin master"
+
+
+- For Cloning from remote
+git clone https://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@github.com/lanxCity/alx-pre_course.git
+
+
+-To reset remote origin
+git remote set-url origin https://github.com/user/repo2.git

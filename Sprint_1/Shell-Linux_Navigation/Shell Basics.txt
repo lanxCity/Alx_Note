@@ -1,0 +1,14 @@
+=> These examples also point out an important concept about commands. Most commands operate like this:
+
+"command -options arguments"
+
+where command is the name of the command, -options is one or more adjustments to the command's behavior, and arguments is one or more "things" upon which the command operates.
+
+In the case of ls, we see that ls is the name of the command, and that it can have one or more options, such as -a and -l, and it can operate on one or more files or directories
+
+#!/bin/bash   -> To tell the computer that this is a script and it would be executed with bash. In this case, anything that follows the line are being executed
+
+chmod u+x "fileName" -> This is use to convert the to an "exe" file that can be run
+
+./fileName -> This is used to run the file on the terminal in order to ensure it works
+

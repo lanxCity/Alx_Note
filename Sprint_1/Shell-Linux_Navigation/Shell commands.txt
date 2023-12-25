@@ -1,0 +1,84 @@
+The following commands is for linux (Ubuntu)
+
+exit - To close
+
+uname or (uname -a) - Means "unix name" and it shows the full info about the shell or OS. NB: anything attached to the main command is a flag e.g. "-a" 
+
+flags -> This is denoted with the "-" symbol
+
+pwd - To print the current working directory
+
+ls (ls nameOfSubFolderToView) - listing files or contents in the working directory
+
+ls -l -> To list the full details of those contents in the working folder
+
+ls -l dir/ -> To list the full details of the contents in the directory pointed to
+
+cal - To view calendar 
+
+$ COPY file1.txt file2.txt              $ cp file1.txt file2.txt
+$ COPY [.dir]file.txt []                $ cp dir/file.txt .
+$ COPY [.dir]file.txt [-]               $ cp dir/file.txt ..
+$ DELETE *.dat;*                        $ rm *dat
+$ DIFF file1 file2                      $ diff -c file1 file2
+$ PRINT file                            $ lpr file
+$ PRINT/queue=queuename file            $ lpr -Pprintername file
+$ SEARCH *.tex;* "geology"              $ grep geology *tex
+
+
+rm -d dirname-> to del dir with no files
+rm -r dirName -> to del dir with files
+rm fileName -> to del a file
+
+mkdir -- to make a new dir
+
+echo 'My first readme' > README.md -- To create a read me file with a content of "My first readme"
+
+The touch command is a standard command used in UNIX/Linux operating system which is used to create, change and modify timestamps of a file. Basically, there are two different commands to create a file in the Linux system which is as follows:
+
+cat my_file: It is used to create a file with content or get contents of a file.
+
+touch my_file: It is used to create a file without any content. The file created using touch command is empty. This command can be used when the user doesn’t have data to store at the time of file creation.
+
+"more READMEmd"-- To output the content of README.md file
+
+
+
+pwd -> To print working directory  (linux)
+
+less -> To print the contents of the file 
+
+NB: Any files that start with "." are considered hidden files
+
+file -> To output the type of file or xtension 
+
+type - Display information about command type
+which - Locate a command
+help - Display reference page for shell builtin
+man - Display an on-line command reference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

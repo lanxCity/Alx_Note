@@ -1,0 +1,56 @@
+- To create a c-program file, you end it with an ext. name of ".c"
+- To start the program, we have the following structure:
+ 
+#include <stdio.h>
+
+int main()
+{
+	//Your code goes here
+	
+
+	return 0;
+
+}
+
+-To compile the source code file, type "gcc filename.c".
+
+-Variables
+
+
+-> Compilation steps
+a. Pre-processing: "gcc -E intro.c" (To give apre-processed code of the source code)
+
+b. Compilation (without linking): "gcc -c intro.c -o intro.o" (To converts pre-processed codes into obj code directly and which can not be executed as linking has not been done yet.) 
+
+-*where "-o" rep the name of the output file 
+
+c. Assembly code: "gcc -S intro.c" (To converts source or preprocessor code into an assembly code)) 
+NB: At this stage, you can run the object ".o" code as an xcutable file.
+
+***----GENERAL NOTE:- source code -> preprocessor -> Assembly -> obj code -> linking
+
+*From the preprocessor ".i" (or source code), assembly code can be generated ".s" (-S option) and then we compile (-c) the assembly code to generate ".obj" or ".o" code and lastly, we link.
+
+*However, obj code can be generated directly from (preprocessor or source code) where assembly step can be omitted.
+
+d. Linking: To generate an xcutable file whereby many libraries and functions that were imported into the source code are linked to the main obj file to produce a single ".exe" file. And in this case, the file generated after compilation is called an "executable file". So in this case, we type,
+
+- "gcc intro.c" or "gcc intro.c -o intro.o"": This combined all the four processes and generate and executable file as "a.out". The "a.out" is the default name.
+
+
+
+ gcc -S $stuff -o $(echo $stuff | rev | cut -f 1 -d "/" | rev | tr ".c" ".s")
+
+-> Introduction
+
+
+
+
+
+
+
+
+
+
+
+

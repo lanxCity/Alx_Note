@@ -1,0 +1,301 @@
+potChatgpt link ("https://chat.openai.com/share/84407bc7-01d0-4887-ba53-38db17ae481a")
+
+Linux commands are typically written and follows this structure:
+
+---> command [options] [arguments] <------
+
+-Command: This is the name of the command you want to execute. For example, ls, cd, mkdir, grep, etc.
+
+-Options: These are typically preceded by one or more hyphens (-) and modify the behavior of the command. Options are usually optional, and not all commands have them. Options can be short (e.g., -l for "list"), long (e.g., --file-type) or has both short and long version (e.g. -a or --all for "all"). 
+You can often combine short options together (e.g., -l -a can be written as -la).
+
+-Arguments: These are typically the targets or objects that the command operates on. The meaning of arguments depends on the command itself. For example, if you're using the cp command to copy files, the arguments might be the source file and the destination directory.
+
+--> Commands
+
+A. To print the manual for a certain command
+-> man <command> 
+
+B. Listing the contents of a certain directory
+-> ls or "ls ." - listing non-hidden contents in the current
+-> "ls .." or "ls ../"- Listing contents of up or parent directory  
+-> ls -a -> Listing all contents (including hidden contents which usually started with ".")
+NB: Any '.' content means the current directory while ".." means the parent directory
+-> ls -la ./ /root/ /boot/ - To list multiple directories on a single line
+
+C. Path or working directory
+a. Relative path
+- cd /  --> The root folder
+- "cd ~" or "cd" --> Home/root_directory
+- "cd -" --> To change to last previous directory from the current one 
+
+b. Absolute path
+- cd /home/myParentDir/myDir/
+
+D. Files and Directories
+- mkdir dirname -> To create a new directory
+- file fileName -> to printout the file type 
+- touch fileName -> The primary use of this command is to update modification time of a certain file to the current time. However, if the file does not exist, it creates an empty one.
+a. touch dir/ -> Updating the timestamp of a directory 
+b. touch fileName -> Creating an empty file with the file name argument supplied but does not exist in the directory
+
+- echo "A line of text"-> To output message or a line of text on the CLI. But by using (echo 'A text' > myFile), it means to output the text in a file and not on the screen.
+- less -> To output the contents of a file inside the CL editor
+- cat -> This displays the file contents inline on the CLI
+- mv -> To rename files and directories. However, it can be used to move files and directories around. In the canalso to rename directory.
+- cp -> To copyfiles and directories
+- "find . -name filename" - To search for file with filename within the current directory (or ".").
+
+* "find -type f -name filename" -  To search for file with filename (or ".").
+
+
+-Recursive options (e.g. in the case of cp or rm for directories)
+*To fix this, we use recursive option  "-r". Which means it should cp or rm all the directories or files the target directory entails.
+
+*Or we can just use the command of "rmdir" to remove empty directories
+
+-ln - This is called the "link" and it is use to create file links
+-grep - global regular expression pattern for writing or search for pattern 
+
+E. pwd -> To print the abs path of working or current directory
+
+F. Other commands
+- which bash - To view the path to the bash interpreter
+- echo $SHELL - To view the name or type of the shell we are working with (usually, bash).
+NB: The $ sign signify a variable
+- date - It output the time and date of the system
+
+G. Wildcards
+
+H. Redirection (stdout and stderr)
+This includes diff ways of redirecting outputs or errors (stdout or stderr) of commands into a file instead of showing the rslt on the screen by default.
+
+By default, both standard output and standard error are linked to the screen and not saved into a disk file.
+
+a. Standard output (1) - (This is the result or data the command is designed to produce)
+
+- "> fileName" -> Like touch command, the ">" re-writes the command output (stdout) into a file if the file already exists but creates a new file with the output if it doesn't exist in the directory. 
+
+In the case of "> file", the '>' re-writes empty into the file as there is no command to output msg.
+ 
+E.g. "echo 'Hello! This a new file.' > fileName". 
+
+* For example, 
+touch fileName -> This updates the modified time of a file.
+"> fileName" -> Redirect empty message into the file as nothing or command is on the other side of the ">".
+
+- By using ">", we are replacing the file content with new one.
+
+- In order to append, we use ">>" to append with new contents to the file.
+ 
+b. standard error (2) - (The error is an output error msg thrown by when the command is misused. E.g. Assuming we wanna view the contents of a directory "myDir" and we mistakenly type "ls myDirectory", the error msg is called [stderr]).
+
+In this case, we use "ls myDirecotry 2> myFile". 
+
+NOTE 1: "1>" is used to redirect standard output while "2>" is used to redirect standard error. where 1 and 2 are the called the file descriptors for both respectively; An identifier assigned to them by the shell.
+
+NOTE 2: "/dev/null" -> This is also called a "bit bucket" which is useful for discarding outputs (stdout or stderr) that are redirected into the null file or device.  
+
+c. Redirecting stdout and stderr into diff files: "command 2> errFile > outFile" or "command > outFile > errFile". 
+
+E.g. "ls -l 2> errFile > outFile" 
+
+d. Redirecting stdout and stderr into same file: There are two methods
+
+i. "command > outFile 2>&1" (e.g. "ls -l > output.txt 2>&1")
+- Using this method, we perform two redirections. First we redirect standard output to the file output.txt and then we redirect file descriptor 2 (standard error) to file descriptor 1 (standard output) using the notation 2>&1.
+
+NOTE 3: Notice that the order of the redirections is significant. The redirection of standard error must always occur after redirecting standard output or it doesn't work.
+
+e. Standard Input (Aside the keyboard) -> This takes input from a file instead of the keyboard and output with the stdout. 
+E.g. "cat" command takes input (usually from the file argument) and output on the screen; "cat myFile" which also the same as "cat < myFile", and which means take input from the file, myFile.   
+
+f. Piping -> This is about taking the output of a program or command and use it as an input to another program or command.
+
+Simply put, the redirection operator connects a command with a file, while the pipeline operator connects the output of one command with the input of a second command. For example,
+-command1 > file1 e.g. ls -l > fileName (Redirection)
+-command1 | command2 e.g. "ls -l | less", where the output of ls command is inputted into less command (Piping)
+
+g. Tee command: It read from standard input and write to standard output and files. In other word, the tee program reads standard input and copies it to both standard output (allowing the data to continue down the pipeline) and to one or more files. This is useful for capturing a pipeline's contents at an intermediate stage of processing. For example,
+
+"ls -l | tee myFile" -> Redirect into myFile and stdout at the same time 
+
+ls -l | tee myFile | less -> Redirect into myFile and piped into the less command as stdin 
+
+NOTE 4: the "| tee" command only redirect stdout.
+
+* For tee command to for both stdout and stderr (just like "ls > output 2>&1" using same file), we use;
+
+- "ls -l 2>&1 | tee myFile" or "ls -l |& tee myFile"
+- which command - To view the location of a commannd
+
+
+I. System admistration
+a. Using the root or superuser a commands: 
+-> Users
+-"useradd username" or "adduser username" (modern command) - To add user to the system 
+
+-"getent passwd", "getent passwd userID" or cat /etc/passwd - To view the list of users or view user with same id
+
+- del username - To delete user account
+
+- passwd - To change my password
+- passwd username - To change the another user's password
+- id or "id username" - To check your id or other user's id
+- logout/login - For other users aside the root
+- touch /home/username/fileName - To create new file inside a user's acct
+
+
+-> groups
+- "addgroup groupName"- To create new group
+- "usermod -a -G groupName username" - To add user to a group. Normally, usermod is used to modify user acct.
+- "groups" or "groups username" - To view all the group current user or another user belongs to
+- "gpasswd -d username groupName" - To remove a user from the group
+- delgroup groupname - To delete group
+- visudo - To modify permissions given to a user or members of a group in the "sudoers file". This allows the user to run certain commands that was not allowed as a regular user but only to the super user.
+
+E.g. - For a certain user, under the comment "User priviledge specification" and after the root permissions, we have, 
+ 
+ username ALL=/usr/bin/ls (ls is only as a sample here)
+
+- For members of a group, under the comment of "Allow members of group sudo to execute any command". So after sudo group permission, then we have,
+
+%groupName ALL=/usr/bin/ls, /usr/bin/apt, etc.
+
+b. Using regular user commands
+-> Users
+-"sudo useradd username" or "sudo adduser username" (modern command) - To add user to the system
+- su username - To substitute or login into the username acct and use same command to login back to the primary acct e.g su - vagrant (the hypen means the home dir of the user acct and not the primary home, "adigun@...:/home/vagrant$" but "adigun@...:~$").
+
+- id or "id username" -> To view the id of user
+
+NOTE 5:In my case, I used exit to go back because i am nott using the vm through GUI but vagrant ssh.
+
+- getent passwd {1000..60000} -> To view normal users aside the sys-users such as root
+
+- The above ".." can be used to create multiple files
+
+-> Groups
+- usermod - To modify user account
+- "sudo usermod -a -G groupName username" - To add another user to a group. The user that would be adding another must already be in sudo group e.g. vagrant is used as a regular user but added to the sudo group by default; it is not the root unlike alx intranet sandbox.
+-"sudo usermod -g groupName username" - To change the primary group of users to new group created.
+
+- "sudo touch /home/username/fileName" - To create new file inside user's acct (sudo is not necessary if the user already gave permissions for his home directory).
+NB: Users are other to one another. 
+
+-cat /etc/group/ - To view the list of groups with their IDs
+
+NOTE 6: For a teacher to modify other student's file (reading is allowed by default), the following must be done:
+
+* The student primary group must be sets to the grp created while the teacher can just join the group.
+
+
+
+
+
+
+  
+
+J. File permissions
+- chmod - to change the file mode
+
+*chmod 777 myFile
+*chmod u+x,go=r file
+*chmod +x filename
+*chmod o-x filename
+
+- For a particular file or directory, there is something called permissions attached to it and which include, "rwxrwxrwx".
+
+The first "rwx" -> Rep the one who created file or owner e.g. it can be root, or any other user.
+
+The second "rwx" -> Rep the primary group of the user
+
+The third "rwx" -> Rep other users
+
+- Using octal notation
+x == 1, w == 2, r == 4 (eqv to 7 for a user or group, or others)
+
+- Using letter symbols
+u = user, g = group, o = other, a = all
+
+*pattern
+u+x = owner executing perm
+u+rwx = owner all perm
+u-w = remove owner write perm
+ug = rw, o+r = owner and group have perm to read and write while other only have perm to read 
+
+==>Refer to page 115 of linux command line textbook
+
+- chown - To change ownership of a file
+*chown username:groupName fileName - To change ownership to both user and group
+*chown username fileName - To change ownership to both user and group
+*chown :groupName fileName - To change ownership to the new group (pry group)
+ 
+
+k. umask – Set Default Permissions
+- umask - The umask command works as opposite of permissions' octal notation values where "0" sets the attr and "1" unset the attr.
+
+NOTE: The setting is a default for the user's home directory; the permission is set for all the new files created by the user.  
+
+NOTE: Both "chmod" and "umask" have 4 value e.g. 0777. However, the prefix value is not often used but it can be modify. Instead of "0", we can change it to "1" for SUID, "2" for SGID, "4" for sticky bit. SUID - Set User ID... Note that if the value is set on the directory using "chmod", it reflects on the directory's permission. E.g "chmod 2777 ." then the "X" for group permission changes to "s".
+
+L. Control operators (Issuing multiple commands in terminal)
+- ";" - It used to separate multiple commands and all the commands run synchronously e.g. sleep 5 ; echo "Lanx"
+
+
+- & - This is used to run stuffs underground (such as script) while continue doing something else on the terminal. e.g. 
+
+* ./myScript & - this runs the script underground while we continue doing stuffs
+* ./myScript & echo "Hell world"
+* "jobs" - To view what's running underground
+* "fg" - To jump into the foreground job and this won't allow us to do other stuffs on the terminal. (we use "fg %processNum" to choose any process to put foreground or background with "bg")
+* "Ctrl+z" - To pause the foreground process 
+* "bg" - To send the process back to background
+
+* However, double "&&" ("and" operator) do same job as ";" but the next command would be executed only if the current one doesn't thrown error.
+
+- "||" ("or" operator) - If one of the sides run (or it's true), then the other side would not be run 
+
+M. Processes 
+- ps - Report a snapshot of current processes
+- jobs - List active jobs
+- top - Display all information about tasks or processes
+- "kill PID(processID)"– Send a signal to a process and by default, it sends "TERM" to terminate the running of a process (or closing an app)
+* "kill -KILL PID" - To force close a process 
+* "kill -l" - To see the list of the kill signals
+
+
+---> Chapter 8 (Linux command...) <---
+usr/bin - To view all the shell commands
+*NB: "./myScript" to run a script or file the has "x" perm.
+
+Some Shell Shortcuts
+Note:
+- ctrl+c  --> Does not use to copying stuff on CLI but to terminate the process running e.g app installation or running command
+
+- In linux, there is nothing like file extension in linux but rather, it considered everything (including the ".smthng") as the file name. However, the type of file only depends on the contents of the file.
+
+
+
+
+find ./ -type f -name '[0-5]*'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

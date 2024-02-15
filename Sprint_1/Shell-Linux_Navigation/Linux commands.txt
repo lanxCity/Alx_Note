@@ -1,4 +1,4 @@
-potChatgpt link ("https://chat.openai.com/share/84407bc7-01d0-4887-ba53-38db17ae481a")
+atpotChatgpt link ("https://chat.openai.com/share/84407bc7-01d0-4887-ba53-38db17ae481a")
 
 Linux commands are typically written and follows this structure:
 
@@ -40,6 +40,7 @@ a. touch dir/ -> Updating the timestamp of a directory
 b. touch fileName -> Creating an empty file with the file name argument supplied but does not exist in the directory
 
 - echo "A line of text"-> To output message or a line of text on the CLI. But by using (echo 'A text' > myFile), it means to output the text in a file and not on the screen.
+- cal -> To output calender
 - less -> To output the contents of a file inside the CL editor
 - cat -> This displays the file contents inline on the CLI
 - mv -> To rename files and directories. However, it can be used to move files and directories around. In the canalso to rename directory.

@@ -37,7 +37,10 @@ a -> To start typing after the semi-colon of a line from command mode to insert 
 w -> To jump to the beginnig of the next word
 b -> To jump to the beginnig of the previous word
 shift + zz -> function as (:wq)
-d+$ -> To delete to the end of the line
+d+$ -> To delete a section to the end of the line
+$ -> To the end of a line
+^ -> To the start of a statement 
+0 -> To the start of a line
 
 ":syntax on" -> To enable linter or to highlight necessary thing in the code
 
@@ -45,7 +48,7 @@ d+$ -> To delete to the end of the line
 
 NB: All these are ignored once the editor is closed. However, to enable those settings on by default, we need to add those commands to a configuration file. Follow this:
 
--Go to home directory; create a file ".vimrc" and open with vim editor; Type all the setting inside the file and close.
+-Go to home directory; create a configuration file ".vimrc" and open with vim editor; Type all the setting inside the file and close.
 
 
 

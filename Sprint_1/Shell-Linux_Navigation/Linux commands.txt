@@ -22,6 +22,7 @@ B. Listing the contents of a certain directory
 -> ls -a -> Listing all contents (including hidden contents which usually started with ".")
 NB: Any '.' content means the current directory while ".." means the parent directory
 -> ls -la ./ /root/ /boot/ - To list multiple directories on a single line
+-> ls -l -> list with 'long' option
 
 C. Path or working directory
 a. Relative path
@@ -42,7 +43,8 @@ b. touch fileName -> Creating an empty file with the file name argument supplied
 - echo "A line of text"-> To output message or a line of text on the CLI. But by using (echo 'A text' > myFile), it means to output the text in a file and not on the screen.
 - cal -> To output calender
 - less -> To output the contents of a file inside the CL editor
-- cat -> This displays the file contents inline on the CLI
+- cat (concatenate) -> This displays the file contents inline the CLI and can also be used to take input from the keyboard using 
+redirection 
 - mv -> To rename files and directories. However, it can be used to move files and directories around. In the canalso to rename directory.
 - cp -> To copyfiles and directories
 - "find . -name filename" - To search for file with filename within the current directory (or ".").
@@ -64,6 +66,7 @@ F. Other commands
 - which bash - To view the path to the bash interpreter
 - echo $SHELL - To view the name or type of the shell we are working with (usually, bash).
 NB: The $ sign signify a variable
+- echo $PATH - To view the paths that searched automatically while executing cmd or script
 - date - It output the time and date of the system
 
 G. Wildcards

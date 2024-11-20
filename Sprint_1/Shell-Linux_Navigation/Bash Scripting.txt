@@ -36,6 +36,15 @@ myOutput = $(ls) !where $(ls) is called subshell; subshell allows you to execute
 => Math functions
 - To evaluate any mathematical expression, we use evaluate expressions command using "expr" followed by the expression itself.
 e.g. expr 30 + 65
+== Revision
+- shell is a "command language interpreter"
+- #!/bin/bash
+- At the end of a file, 'exit' could be used (but redundant). But it is useful for handling errors
+
+
+
+
+
 
 -In the case of some characters that have special meaning in bash, we use escape character "\" before the character itself
 e.g $54 \* $4   (since * is one of the wildcards)  

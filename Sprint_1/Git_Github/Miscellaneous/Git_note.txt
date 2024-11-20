@@ -26,18 +26,6 @@ B. initializing a Repository
 - Create a project directory and navigate to the folder from the cmd
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 cd yourDirectory --- cd To Change directory to your directory
 
 git init -- To initialize or create new repository 

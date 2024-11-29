@@ -135,6 +135,9 @@ git log -- To review all the commits made.
 
 git commit -m "commited name or label to be corrected to" --amend -- To rename a recent commited name
 
+NB: For the renaming to take effect remotely,  
+"git push origin master --force"
+
 git help log -- To view log documentary
 
 git reset commit-id -- To jump back to previous commit
